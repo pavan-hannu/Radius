@@ -1,3 +1,4 @@
+import React from 'react';
 import "./global.css";
 import { ConfigProvider } from 'antd';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
