@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Table, 
-  Card, 
-  Button, 
-  Space, 
-  Tag, 
-  Input, 
-  Select, 
+import {
+  Table,
+  Card,
+  Button,
+  Space,
+  Tag,
+  Input,
+  Select,
   Typography,
   Avatar,
   Tooltip,
@@ -24,6 +24,7 @@ import {
   ExportOutlined,
 } from '@ant-design/icons';
 import { useAuth } from '../contexts/AuthContext';
+import AddStudentModal from '../components/AddStudentModal';
 
 const { Title, Text } = Typography;
 const { Search } = Input;
@@ -36,6 +37,7 @@ const Students = () => {
   const [filteredStudents, setFilteredStudents] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
+  const [isAddModalVisible, setIsAddModalVisible] = useState(false);
 
   useEffect(() => {
     // Simulate API call to fetch students
@@ -251,6 +253,14 @@ const Students = () => {
     enrolled: filteredStudents.filter(s => s.status === 'Enrolled').length,
   };
 
+  const handleAddStudent = (studentData) => {
+    // In real app, this would call API to save student
+    console.log('Adding new student:', studentData);
+    setIsAddModalVisible(false);
+    // Refresh students list
+    // fetchStudents();
+  };
+
   return (
     <div>
       {/* Header */}
@@ -264,7 +274,12 @@ const Students = () => {
           </Text>
         </div>
         {hasPermission('edit_students') && (
-          <Button type="primary" icon={<PlusOutlined />} size="large">
+          <Button
+            type="primary"
+            icon={<PlusOutlined />}
+            size="large"
+            onClick={() => setIsAddModalVisible(true)}
+          >
             Add New Student
           </Button>
         )}
@@ -364,6 +379,13 @@ const Students = () => {
           scroll={{ x: 1000 }}
         />
       </Card>
+
+      {/* Add Student Modal */}
+      <AddStudentModal
+        visible={isAddModalVisible}
+        onCancel={() => setIsAddModalVisible(false)}
+        onSave={handleAddStudent}
+      />
     </div>
   );
 };
