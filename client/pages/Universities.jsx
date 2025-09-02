@@ -603,7 +603,7 @@ const Universities = () => {
       {/* University Detail Modal */}
       <Modal
         title={selectedUniversity?.name}
-        visible={isDetailModalVisible}
+        open={isDetailModalVisible}
         onCancel={() => setIsDetailModalVisible(false)}
         footer={null}
         width={1000}
