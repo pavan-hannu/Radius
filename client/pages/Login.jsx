@@ -181,7 +181,7 @@ const Login = () => {
               boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)",
               border: "none",
             }}
-            bodyStyle={{ padding: "40px" }}
+            styles={{ body: { padding: "40px" } }}
           >
             <div style={{ textAlign: "center", marginBottom: "32px" }}>
               <Title
