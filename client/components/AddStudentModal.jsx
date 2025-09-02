@@ -363,7 +363,7 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
           </Text>
         </div>
       }
-      visible={visible}
+      open={visible}
       onCancel={handleCancel}
       footer={null}
       width={800}
