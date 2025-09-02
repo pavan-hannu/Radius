@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
-import { Form, Input, Button, Card, Typography, Space, Select, message } from 'antd';
-import { UserOutlined, LockOutlined, LoginOutlined } from '@ant-design/icons';
-import { useAuth } from '../contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import {
+  Form,
+  Input,
+  Button,
+  Card,
+  Typography,
+  Space,
+  Select,
+  message,
+} from "antd";
+import { UserOutlined, LockOutlined, LoginOutlined } from "@ant-design/icons";
+import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const { Title, Text, Paragraph } = Typography;
 const { Option } = Select;
@@ -17,13 +26,13 @@ const Login = () => {
     try {
       const result = await login(values);
       if (result.success) {
-        message.success('Login successful! Welcome to Study Abroad CRM');
-        navigate('/dashboard');
+        message.success("Login successful! Welcome to Study Abroad CRM");
+        navigate("/dashboard");
       } else {
-        message.error(result.error || 'Login failed. Please try again.');
+        message.error(result.error || "Login failed. Please try again.");
       }
     } catch (error) {
-      message.error('An unexpected error occurred. Please try again.');
+      message.error("An unexpected error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -32,96 +41,133 @@ const Login = () => {
   // Demo credentials helper
   const fillDemoCredentials = (role) => {
     const credentials = {
-      admin: { email: 'admin@studyabroad.com', password: 'admin123' },
-      counselor: { email: 'counselor@studyabroad.com', password: 'counselor123' },
-      employee: { email: 'employee@studyabroad.com', password: 'employee123' },
+      admin: { email: "admin@studyabroad.com", password: "admin123" },
+      counselor: {
+        email: "counselor@studyabroad.com",
+        password: "counselor123",
+      },
+      employee: { email: "employee@studyabroad.com", password: "employee123" },
     };
-    
-    const form = document.querySelector('form');
+
+    const form = document.querySelector("form");
     form.querySelector('input[name="email"]').value = credentials[role].email;
-    form.querySelector('input[name="password"]').value = credentials[role].password;
-    
+    form.querySelector('input[name="password"]').value =
+      credentials[role].password;
+
     // Trigger form validation
     const emailInput = form.querySelector('input[name="email"]');
     const passwordInput = form.querySelector('input[name="password"]');
-    
-    emailInput.dispatchEvent(new Event('input', { bubbles: true }));
-    passwordInput.dispatchEvent(new Event('input', { bubbles: true }));
+
+    emailInput.dispatchEvent(new Event("input", { bubbles: true }));
+    passwordInput.dispatchEvent(new Event("input", { bubbles: true }));
   };
 
   return (
-    <div 
+    <div
       style={{
-        minHeight: '100vh',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '20px',
+        minHeight: "100vh",
+        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "20px",
       }}
     >
-      <div style={{ width: '100%', maxWidth: '1200px', display: 'flex', gap: '40px', alignItems: 'center' }}>
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "1200px",
+          display: "flex",
+          gap: "40px",
+          alignItems: "center",
+        }}
+      >
         {/* Left side - Branding */}
-        <div style={{ flex: 1, color: 'white', display: 'none', '@media (min-width: 768px)': { display: 'block' } }}>
-          <div style={{ marginBottom: '40px' }}>
-            <div 
+        <div
+          style={{
+            flex: 1,
+            color: "white",
+            display: "none",
+            "@media (min-width: 768px)": { display: "block" },
+          }}
+        >
+          <div style={{ marginBottom: "40px" }}>
+            <div
               style={{
                 width: 80,
                 height: 80,
-                background: 'rgba(255, 255, 255, 0.2)',
-                borderRadius: '20px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'white',
-                fontWeight: 'bold',
-                fontSize: '32px',
-                marginBottom: '24px',
-                backdropFilter: 'blur(10px)',
+                background: "rgba(255, 255, 255, 0.2)",
+                borderRadius: "20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "white",
+                fontWeight: "bold",
+                fontSize: "32px",
+                marginBottom: "24px",
+                backdropFilter: "blur(10px)",
               }}
             >
               SA
             </div>
-            <Title level={1} style={{ color: 'white', marginBottom: '16px', fontSize: '48px' }}>
+            <Title
+              level={1}
+              style={{ color: "white", marginBottom: "16px", fontSize: "48px" }}
+            >
               Study Abroad CRM
             </Title>
-            <Paragraph style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '18px', lineHeight: '1.6' }}>
-              Streamline your consultancy operations with our comprehensive CRM solution. 
-              Manage students, track applications, and grow your study abroad business efficiently.
+            <Paragraph
+              style={{
+                color: "rgba(255, 255, 255, 0.8)",
+                fontSize: "18px",
+                lineHeight: "1.6",
+              }}
+            >
+              Streamline your consultancy operations with our comprehensive CRM
+              solution. Manage students, track applications, and grow your study
+              abroad business efficiently.
             </Paragraph>
           </div>
-          
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <div style={{ 
-                width: '8px', 
-                height: '8px', 
-                background: 'rgba(255, 255, 255, 0.8)', 
-                borderRadius: '50%' 
-              }} />
-              <Text style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "16px" }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              <div
+                style={{
+                  width: "8px",
+                  height: "8px",
+                  background: "rgba(255, 255, 255, 0.8)",
+                  borderRadius: "50%",
+                }}
+              />
+              <Text style={{ color: "rgba(255, 255, 255, 0.9)" }}>
                 Complete student lifecycle management
               </Text>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <div style={{ 
-                width: '8px', 
-                height: '8px', 
-                background: 'rgba(255, 255, 255, 0.8)', 
-                borderRadius: '50%' 
-              }} />
-              <Text style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              <div
+                style={{
+                  width: "8px",
+                  height: "8px",
+                  background: "rgba(255, 255, 255, 0.8)",
+                  borderRadius: "50%",
+                }}
+              />
+              <Text style={{ color: "rgba(255, 255, 255, 0.9)" }}>
                 Role-based access control
               </Text>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <div style={{ 
-                width: '8px', 
-                height: '8px', 
-                background: 'rgba(255, 255, 255, 0.8)', 
-                borderRadius: '50%' 
-              }} />
-              <Text style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              <div
+                style={{
+                  width: "8px",
+                  height: "8px",
+                  background: "rgba(255, 255, 255, 0.8)",
+                  borderRadius: "50%",
+                }}
+              />
+              <Text style={{ color: "rgba(255, 255, 255, 0.9)" }}>
                 University and application tracking
               </Text>
             </div>
@@ -129,20 +175,23 @@ const Login = () => {
         </div>
 
         {/* Right side - Login Form */}
-        <div style={{ flex: 1, maxWidth: '480px' }}>
+        <div style={{ flex: 1, maxWidth: "480px" }}>
           <Card
             style={{
-              borderRadius: '16px',
-              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)',
-              border: 'none',
+              borderRadius: "16px",
+              boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)",
+              border: "none",
             }}
-            bodyStyle={{ padding: '40px' }}
+            bodyStyle={{ padding: "40px" }}
           >
-            <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-              <Title level={2} style={{ marginBottom: '8px', color: '#1976d2' }}>
+            <div style={{ textAlign: "center", marginBottom: "32px" }}>
+              <Title
+                level={2}
+                style={{ marginBottom: "8px", color: "#1976d2" }}
+              >
                 Welcome Back
               </Title>
-              <Text type="secondary" style={{ fontSize: '16px' }}>
+              <Text type="secondary" style={{ fontSize: "16px" }}>
                 Sign in to your Study Abroad CRM account
               </Text>
             </div>
@@ -158,26 +207,28 @@ const Login = () => {
                 name="email"
                 label="Email Address"
                 rules={[
-                  { required: true, message: 'Please input your email!' },
-                  { type: 'email', message: 'Please enter a valid email!' }
+                  { required: true, message: "Please input your email!" },
+                  { type: "email", message: "Please enter a valid email!" },
                 ]}
               >
-                <Input 
-                  prefix={<UserOutlined />} 
+                <Input
+                  prefix={<UserOutlined />}
                   placeholder="Enter your email address"
-                  style={{ borderRadius: '8px' }}
+                  style={{ borderRadius: "8px" }}
                 />
               </Form.Item>
 
               <Form.Item
                 name="password"
                 label="Password"
-                rules={[{ required: true, message: 'Please input your password!' }]}
+                rules={[
+                  { required: true, message: "Please input your password!" },
+                ]}
               >
                 <Input.Password
                   prefix={<LockOutlined />}
                   placeholder="Enter your password"
-                  style={{ borderRadius: '8px' }}
+                  style={{ borderRadius: "8px" }}
                 />
               </Form.Item>
 
@@ -188,11 +239,11 @@ const Login = () => {
                   loading={loading}
                   icon={<LoginOutlined />}
                   style={{
-                    width: '100%',
-                    height: '48px',
-                    borderRadius: '8px',
-                    fontSize: '16px',
-                    fontWeight: '500',
+                    width: "100%",
+                    height: "48px",
+                    borderRadius: "8px",
+                    fontSize: "16px",
+                    fontWeight: "500",
                   }}
                 >
                   Sign In
@@ -201,39 +252,55 @@ const Login = () => {
             </Form>
 
             {/* Demo Credentials */}
-            <div style={{ marginTop: '24px', padding: '16px', background: '#f8f9fa', borderRadius: '8px' }}>
-              <Text strong style={{ display: 'block', marginBottom: '12px', color: '#666' }}>
+            <div
+              style={{
+                marginTop: "24px",
+                padding: "16px",
+                background: "#f8f9fa",
+                borderRadius: "8px",
+              }}
+            >
+              <Text
+                strong
+                style={{
+                  display: "block",
+                  marginBottom: "12px",
+                  color: "#666",
+                }}
+              >
                 Demo Credentials:
               </Text>
-              <Space direction="vertical" style={{ width: '100%' }}>
-                <Button 
-                  type="link" 
-                  size="small" 
-                  onClick={() => fillDemoCredentials('admin')}
-                  style={{ padding: 0, height: 'auto', textAlign: 'left' }}
+              <Space direction="vertical" style={{ width: "100%" }}>
+                <Button
+                  type="link"
+                  size="small"
+                  onClick={() => fillDemoCredentials("admin")}
+                  style={{ padding: 0, height: "auto", textAlign: "left" }}
                 >
-                  <Text style={{ fontSize: '13px' }}>
+                  <Text style={{ fontSize: "13px" }}>
                     <strong>Admin:</strong> admin@studyabroad.com / admin123
                   </Text>
                 </Button>
-                <Button 
-                  type="link" 
-                  size="small" 
-                  onClick={() => fillDemoCredentials('counselor')}
-                  style={{ padding: 0, height: 'auto', textAlign: 'left' }}
+                <Button
+                  type="link"
+                  size="small"
+                  onClick={() => fillDemoCredentials("counselor")}
+                  style={{ padding: 0, height: "auto", textAlign: "left" }}
                 >
-                  <Text style={{ fontSize: '13px' }}>
-                    <strong>Counselor:</strong> counselor@studyabroad.com / counselor123
+                  <Text style={{ fontSize: "13px" }}>
+                    <strong>Counselor:</strong> counselor@studyabroad.com /
+                    counselor123
                   </Text>
                 </Button>
-                <Button 
-                  type="link" 
-                  size="small" 
-                  onClick={() => fillDemoCredentials('employee')}
-                  style={{ padding: 0, height: 'auto', textAlign: 'left' }}
+                <Button
+                  type="link"
+                  size="small"
+                  onClick={() => fillDemoCredentials("employee")}
+                  style={{ padding: 0, height: "auto", textAlign: "left" }}
                 >
-                  <Text style={{ fontSize: '13px' }}>
-                    <strong>Employee:</strong> employee@studyabroad.com / employee123
+                  <Text style={{ fontSize: "13px" }}>
+                    <strong>Employee:</strong> employee@studyabroad.com /
+                    employee123
                   </Text>
                 </Button>
               </Space>

@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  Row, 
-  Col, 
-  Card, 
-  Table, 
-  Button, 
-  Space, 
-  Tag, 
-  Typography, 
-  Avatar, 
+import React, { useState, useEffect } from "react";
+import {
+  Row,
+  Col,
+  Card,
+  Table,
+  Button,
+  Space,
+  Tag,
+  Typography,
+  Avatar,
   Statistic,
   Modal,
   Form,
@@ -19,8 +19,8 @@ import {
   Tooltip,
   DatePicker,
   Badge,
-  Tabs
-} from 'antd';
+  Tabs,
+} from "antd";
 import {
   PlusOutlined,
   UserOutlined,
@@ -32,9 +32,9 @@ import {
   CalendarOutlined,
   TeamOutlined,
   TrophyOutlined,
-  ClockCircleOutlined
-} from '@ant-design/icons';
-import { useAuth } from '../contexts/AuthContext';
+  ClockCircleOutlined,
+} from "@ant-design/icons";
+import { useAuth } from "../contexts/AuthContext";
 
 const { Title, Text, Paragraph } = Typography;
 const { TextArea } = Input;
@@ -54,107 +54,161 @@ const Employees = () => {
   useEffect(() => {
     const fetchEmployees = async () => {
       setLoading(true);
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       // Mock employee data with assigned students and contact history
       const mockEmployees = [
         {
           id: 1,
-          name: 'Sarah Johnson',
-          email: 'sarah.johnson@studyabroad.com',
-          phone: '+1 234-567-8901',
-          role: 'Senior Counselor',
-          department: 'Counseling',
-          joinDate: '2023-01-15',
-          status: 'Active',
+          name: "Sarah Johnson",
+          email: "sarah.johnson@studyabroad.com",
+          phone: "+1 234-567-8901",
+          role: "Senior Counselor",
+          department: "Counseling",
+          joinDate: "2023-01-15",
+          status: "Active",
           assignedStudents: 23,
           completedApplications: 18,
           successRate: 94,
-          avatar: 'S',
+          avatar: "S",
           students: [
             {
               id: 1,
-              name: 'Arjun Patel',
-              status: 'Applied',
-              lastContact: '2024-01-20',
-              nextFollowUp: '2024-01-22',
-              priority: 'High',
+              name: "Arjun Patel",
+              status: "Applied",
+              lastContact: "2024-01-20",
+              nextFollowUp: "2024-01-22",
+              priority: "High",
               remarks: [
-                { date: '2024-01-20', time: '10:30 AM', content: 'Discussed visa documentation requirements. Student is concerned about financial proof.', type: 'Call' },
-                { date: '2024-01-18', time: '2:15 PM', content: 'Sent university admission requirements. Student will submit application by Friday.', type: 'Email' },
-                { date: '2024-01-15', time: '11:00 AM', content: 'Initial consultation completed. Student interested in Computer Science programs in Canada.', type: 'Meeting' }
-              ]
+                {
+                  date: "2024-01-20",
+                  time: "10:30 AM",
+                  content:
+                    "Discussed visa documentation requirements. Student is concerned about financial proof.",
+                  type: "Call",
+                },
+                {
+                  date: "2024-01-18",
+                  time: "2:15 PM",
+                  content:
+                    "Sent university admission requirements. Student will submit application by Friday.",
+                  type: "Email",
+                },
+                {
+                  date: "2024-01-15",
+                  time: "11:00 AM",
+                  content:
+                    "Initial consultation completed. Student interested in Computer Science programs in Canada.",
+                  type: "Meeting",
+                },
+              ],
             },
             {
               id: 2,
-              name: 'Rahul Kumar',
-              status: 'Enrolled',
-              lastContact: '2024-01-18',
-              nextFollowUp: '2024-02-01',
-              priority: 'Low',
+              name: "Rahul Kumar",
+              status: "Enrolled",
+              lastContact: "2024-01-18",
+              nextFollowUp: "2024-02-01",
+              priority: "Low",
               remarks: [
-                { date: '2024-01-18', time: '3:45 PM', content: 'Congratulated on successful enrollment. Provided pre-departure checklist.', type: 'Call' },
-                { date: '2024-01-10', time: '9:30 AM', content: 'Visa approved! Student very excited. Discussed accommodation options.', type: 'Call' }
-              ]
-            }
-          ]
+                {
+                  date: "2024-01-18",
+                  time: "3:45 PM",
+                  content:
+                    "Congratulated on successful enrollment. Provided pre-departure checklist.",
+                  type: "Call",
+                },
+                {
+                  date: "2024-01-10",
+                  time: "9:30 AM",
+                  content:
+                    "Visa approved! Student very excited. Discussed accommodation options.",
+                  type: "Call",
+                },
+              ],
+            },
+          ],
         },
         {
           id: 2,
-          name: 'Mike Chen',
-          email: 'mike.chen@studyabroad.com',
-          phone: '+1 234-567-8902',
-          role: 'Counselor',
-          department: 'Counseling',
-          joinDate: '2023-03-10',
-          status: 'Active',
+          name: "Mike Chen",
+          email: "mike.chen@studyabroad.com",
+          phone: "+1 234-567-8902",
+          role: "Counselor",
+          department: "Counseling",
+          joinDate: "2023-03-10",
+          status: "Active",
           assignedStudents: 19,
           completedApplications: 15,
           successRate: 89,
-          avatar: 'M',
+          avatar: "M",
           students: [
             {
               id: 3,
-              name: 'Priya Sharma',
-              status: 'Visa Approved',
-              lastContact: '2024-01-19',
-              nextFollowUp: '2024-01-25',
-              priority: 'Medium',
+              name: "Priya Sharma",
+              status: "Visa Approved",
+              lastContact: "2024-01-19",
+              nextFollowUp: "2024-01-25",
+              priority: "Medium",
               remarks: [
-                { date: '2024-01-19', time: '1:20 PM', content: 'Visa interview went well. Student confident about approval.', type: 'Call' },
-                { date: '2024-01-15', time: '4:00 PM', content: 'Helped prepare for visa interview. Reviewed all documents.', type: 'Meeting' }
-              ]
-            }
-          ]
+                {
+                  date: "2024-01-19",
+                  time: "1:20 PM",
+                  content:
+                    "Visa interview went well. Student confident about approval.",
+                  type: "Call",
+                },
+                {
+                  date: "2024-01-15",
+                  time: "4:00 PM",
+                  content:
+                    "Helped prepare for visa interview. Reviewed all documents.",
+                  type: "Meeting",
+                },
+              ],
+            },
+          ],
         },
         {
           id: 3,
-          name: 'Lisa Wang',
-          email: 'lisa.wang@studyabroad.com',
-          phone: '+1 234-567-8903',
-          role: 'Junior Counselor',
-          department: 'Counseling',
-          joinDate: '2023-08-20',
-          status: 'Active',
+          name: "Lisa Wang",
+          email: "lisa.wang@studyabroad.com",
+          phone: "+1 234-567-8903",
+          role: "Junior Counselor",
+          department: "Counseling",
+          joinDate: "2023-08-20",
+          status: "Active",
           assignedStudents: 15,
           completedApplications: 10,
           successRate: 87,
-          avatar: 'L',
+          avatar: "L",
           students: [
             {
               id: 4,
-              name: 'Sneha Gupta',
-              status: 'Document Review',
-              lastContact: '2024-01-20',
-              nextFollowUp: '2024-01-21',
-              priority: 'High',
+              name: "Sneha Gupta",
+              status: "Document Review",
+              lastContact: "2024-01-20",
+              nextFollowUp: "2024-01-21",
+              priority: "High",
               remarks: [
-                { date: '2024-01-20', time: '11:15 AM', content: 'Reviewed SOP draft. Suggested improvements for personal statement section.', type: 'Email' },
-                { date: '2024-01-17', time: '2:30 PM', content: 'Student submitted transcripts. Missing one recommendation letter.', type: 'Call' }
-              ]
-            }
-          ]
-        }
+                {
+                  date: "2024-01-20",
+                  time: "11:15 AM",
+                  content:
+                    "Reviewed SOP draft. Suggested improvements for personal statement section.",
+                  type: "Email",
+                },
+                {
+                  date: "2024-01-17",
+                  time: "2:30 PM",
+                  content:
+                    "Student submitted transcripts. Missing one recommendation letter.",
+                  type: "Call",
+                },
+              ],
+            },
+          ],
+        },
       ];
 
       setEmployees(mockEmployees);
@@ -176,105 +230,113 @@ const Employees = () => {
 
   const handleSaveRemark = (values) => {
     // In real app, this would save to backend
-    console.log('Saving remark:', values);
+    console.log("Saving remark:", values);
     setIsRemarkModalVisible(false);
     setSelectedStudent(null);
   };
 
   const getPriorityColor = (priority) => {
     const colors = {
-      'High': 'red',
-      'Medium': 'orange',
-      'Low': 'green'
+      High: "red",
+      Medium: "orange",
+      Low: "green",
     };
-    return colors[priority] || 'default';
+    return colors[priority] || "default";
   };
 
   const getStatusColor = (status) => {
     const colors = {
-      'Inquiry': 'default',
-      'Document Review': 'orange',
-      'Applied': 'blue',
-      'Visa Approved': 'green',
-      'Enrolled': 'success',
+      Inquiry: "default",
+      "Document Review": "orange",
+      Applied: "blue",
+      "Visa Approved": "green",
+      Enrolled: "success",
     };
-    return colors[status] || 'default';
+    return colors[status] || "default";
   };
 
   const employeeColumns = [
     {
-      title: 'Employee',
-      dataIndex: 'name',
-      key: 'name',
+      title: "Employee",
+      dataIndex: "name",
+      key: "name",
       render: (text, record) => (
         <Space>
-          <Avatar style={{ backgroundColor: '#1976d2' }}>{record.avatar}</Avatar>
+          <Avatar style={{ backgroundColor: "#1976d2" }}>
+            {record.avatar}
+          </Avatar>
           <div>
             <Text strong>{text}</Text>
             <br />
-            <Text type="secondary" style={{ fontSize: '12px' }}>{record.role}</Text>
+            <Text type="secondary" style={{ fontSize: "12px" }}>
+              {record.role}
+            </Text>
           </div>
         </Space>
       ),
     },
     {
-      title: 'Contact',
-      dataIndex: 'email',
-      key: 'contact',
+      title: "Contact",
+      dataIndex: "email",
+      key: "contact",
       render: (email, record) => (
         <div>
-          <div style={{ marginBottom: '4px' }}>
-            <MailOutlined style={{ marginRight: '4px', color: '#1976d2' }} />
-            <Text style={{ fontSize: '12px' }}>{email}</Text>
+          <div style={{ marginBottom: "4px" }}>
+            <MailOutlined style={{ marginRight: "4px", color: "#1976d2" }} />
+            <Text style={{ fontSize: "12px" }}>{email}</Text>
           </div>
           <div>
-            <PhoneOutlined style={{ marginRight: '4px', color: '#52c41a' }} />
-            <Text style={{ fontSize: '12px' }}>{record.phone}</Text>
+            <PhoneOutlined style={{ marginRight: "4px", color: "#52c41a" }} />
+            <Text style={{ fontSize: "12px" }}>{record.phone}</Text>
           </div>
         </div>
       ),
     },
     {
-      title: 'Assigned Students',
-      dataIndex: 'assignedStudents',
-      key: 'assignedStudents',
+      title: "Assigned Students",
+      dataIndex: "assignedStudents",
+      key: "assignedStudents",
       render: (count) => (
-        <Statistic 
-          value={count} 
-          prefix={<UserOutlined style={{ color: '#1976d2' }} />}
-          valueStyle={{ fontSize: '16px' }}
+        <Statistic
+          value={count}
+          prefix={<UserOutlined style={{ color: "#1976d2" }} />}
+          valueStyle={{ fontSize: "16px" }}
         />
       ),
     },
     {
-      title: 'Success Rate',
-      dataIndex: 'successRate',
-      key: 'successRate',
+      title: "Success Rate",
+      dataIndex: "successRate",
+      key: "successRate",
       render: (rate) => (
         <div>
-          <Text strong style={{ color: '#52c41a' }}>{rate}%</Text>
+          <Text strong style={{ color: "#52c41a" }}>
+            {rate}%
+          </Text>
           <br />
-          <Text type="secondary" style={{ fontSize: '11px' }}>Success Rate</Text>
+          <Text type="secondary" style={{ fontSize: "11px" }}>
+            Success Rate
+          </Text>
         </div>
       ),
     },
     {
-      title: 'Status',
-      dataIndex: 'status',
-      key: 'status',
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
       render: (status) => (
-        <Tag color={status === 'Active' ? 'green' : 'red'}>{status}</Tag>
+        <Tag color={status === "Active" ? "green" : "red"}>{status}</Tag>
       ),
     },
     {
-      title: 'Actions',
-      key: 'actions',
+      title: "Actions",
+      key: "actions",
       render: (_, record) => (
         <Space>
           <Tooltip title="View Details">
-            <Button 
-              type="link" 
-              icon={<EyeOutlined />} 
+            <Button
+              type="link"
+              icon={<EyeOutlined />}
               onClick={() => handleViewDetails(record)}
             />
           </Tooltip>
@@ -289,7 +351,14 @@ const Employees = () => {
   return (
     <div>
       {/* Header */}
-      <div style={{ marginBottom: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div
+        style={{
+          marginBottom: "24px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
         <div>
           <Title level={2} style={{ margin: 0 }}>
             Employee Management
@@ -298,19 +367,23 @@ const Employees = () => {
             Manage your team members, assign students, and track performance
           </Text>
         </div>
-        <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsAddModalVisible(true)}>
+        <Button
+          type="primary"
+          icon={<PlusOutlined />}
+          onClick={() => setIsAddModalVisible(true)}
+        >
           Add Employee
         </Button>
       </div>
 
       {/* Quick Stats */}
-      <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
+      <Row gutter={[16, 16]} style={{ marginBottom: "24px" }}>
         <Col xs={24} sm={6}>
           <Card>
             <Statistic
               title="Total Employees"
               value={employees.length}
-              prefix={<TeamOutlined style={{ color: '#1976d2' }} />}
+              prefix={<TeamOutlined style={{ color: "#1976d2" }} />}
             />
           </Card>
         </Col>
@@ -318,8 +391,8 @@ const Employees = () => {
           <Card>
             <Statistic
               title="Active Counselors"
-              value={employees.filter(e => e.status === 'Active').length}
-              valueStyle={{ color: '#52c41a' }}
+              value={employees.filter((e) => e.status === "Active").length}
+              valueStyle={{ color: "#52c41a" }}
             />
           </Card>
         </Col>
@@ -327,9 +400,12 @@ const Employees = () => {
           <Card>
             <Statistic
               title="Avg Success Rate"
-              value={Math.round(employees.reduce((acc, e) => acc + e.successRate, 0) / employees.length)}
+              value={Math.round(
+                employees.reduce((acc, e) => acc + e.successRate, 0) /
+                  employees.length,
+              )}
               suffix="%"
-              valueStyle={{ color: '#1976d2' }}
+              valueStyle={{ color: "#1976d2" }}
             />
           </Card>
         </Col>
@@ -338,7 +414,7 @@ const Employees = () => {
             <Statistic
               title="Total Students"
               value={employees.reduce((acc, e) => acc + e.assignedStudents, 0)}
-              prefix={<UserOutlined style={{ color: '#722ed1' }} />}
+              prefix={<UserOutlined style={{ color: "#722ed1" }} />}
             />
           </Card>
         </Col>
@@ -369,7 +445,7 @@ const Employees = () => {
       >
         {selectedEmployee && (
           <div>
-            <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
+            <Row gutter={[16, 16]} style={{ marginBottom: "24px" }}>
               <Col span={8}>
                 <Card size="small">
                   <Statistic
@@ -394,30 +470,40 @@ const Employees = () => {
                     title="Success Rate"
                     value={selectedEmployee.successRate}
                     suffix="%"
-                    valueStyle={{ color: '#52c41a' }}
+                    valueStyle={{ color: "#52c41a" }}
                   />
                 </Card>
               </Col>
             </Row>
 
             <Title level={4}>Assigned Students & Contact History</Title>
-            
+
             {selectedEmployee.students?.map((student) => (
-              <Card 
-                key={student.id} 
-                style={{ marginBottom: '16px' }}
+              <Card
+                key={student.id}
+                style={{ marginBottom: "16px" }}
                 size="small"
                 title={
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
                     <Space>
                       <Avatar size="small">{student.name.charAt(0)}</Avatar>
                       <Text strong>{student.name}</Text>
-                      <Tag color={getStatusColor(student.status)}>{student.status}</Tag>
-                      <Tag color={getPriorityColor(student.priority)}>{student.priority} Priority</Tag>
+                      <Tag color={getStatusColor(student.status)}>
+                        {student.status}
+                      </Tag>
+                      <Tag color={getPriorityColor(student.priority)}>
+                        {student.priority} Priority
+                      </Tag>
                     </Space>
-                    <Button 
-                      type="primary" 
-                      size="small" 
+                    <Button
+                      type="primary"
+                      size="small"
                       icon={<CommentOutlined />}
                       onClick={() => handleAddRemark(student)}
                     >
@@ -442,8 +528,14 @@ const Employees = () => {
                         <List.Item>
                           <List.Item.Meta
                             avatar={
-                              <Badge 
-                                color={remark.type === 'Call' ? 'green' : remark.type === 'Email' ? 'blue' : 'orange'} 
+                              <Badge
+                                color={
+                                  remark.type === "Call"
+                                    ? "green"
+                                    : remark.type === "Email"
+                                      ? "blue"
+                                      : "orange"
+                                }
                                 text={remark.type}
                               />
                             }
@@ -460,7 +552,9 @@ const Employees = () => {
                     />
                   </TabPane>
                   <TabPane tab="Follow-up Tasks" key="2">
-                    <Text type="secondary">Next follow-up scheduled for {student.nextFollowUp}</Text>
+                    <Text type="secondary">
+                      Next follow-up scheduled for {student.nextFollowUp}
+                    </Text>
                   </TabPane>
                 </Tabs>
               </Card>
@@ -480,7 +574,7 @@ const Employees = () => {
           <Form.Item
             name="type"
             label="Contact Type"
-            rules={[{ required: true, message: 'Please select contact type' }]}
+            rules={[{ required: true, message: "Please select contact type" }]}
           >
             <Select placeholder="Select contact type">
               <Option value="Call">Phone Call</Option>
@@ -493,25 +587,19 @@ const Employees = () => {
           <Form.Item
             name="content"
             label="Remark/Notes"
-            rules={[{ required: true, message: 'Please enter your remarks' }]}
+            rules={[{ required: true, message: "Please enter your remarks" }]}
           >
-            <TextArea 
-              rows={4} 
+            <TextArea
+              rows={4}
               placeholder="Enter what the student told you, concerns discussed, next steps, etc."
             />
           </Form.Item>
 
-          <Form.Item
-            name="nextFollowUp"
-            label="Next Follow-up Date"
-          >
-            <DatePicker style={{ width: '100%' }} />
+          <Form.Item name="nextFollowUp" label="Next Follow-up Date">
+            <DatePicker style={{ width: "100%" }} />
           </Form.Item>
 
-          <Form.Item
-            name="priority"
-            label="Priority Level"
-          >
+          <Form.Item name="priority" label="Priority Level">
             <Select placeholder="Set priority level" defaultValue="Medium">
               <Option value="High">High</Option>
               <Option value="Medium">Medium</Option>
@@ -545,7 +633,9 @@ const Employees = () => {
               <Form.Item
                 name="name"
                 label="Full Name"
-                rules={[{ required: true, message: 'Please enter employee name' }]}
+                rules={[
+                  { required: true, message: "Please enter employee name" },
+                ]}
               >
                 <Input />
               </Form.Item>
@@ -554,19 +644,27 @@ const Employees = () => {
               <Form.Item
                 name="email"
                 label="Email"
-                rules={[{ required: true, type: 'email', message: 'Please enter valid email' }]}
+                rules={[
+                  {
+                    required: true,
+                    type: "email",
+                    message: "Please enter valid email",
+                  },
+                ]}
               >
                 <Input />
               </Form.Item>
             </Col>
           </Row>
-          
+
           <Row gutter={16}>
             <Col span={12}>
               <Form.Item
                 name="phone"
                 label="Phone"
-                rules={[{ required: true, message: 'Please enter phone number' }]}
+                rules={[
+                  { required: true, message: "Please enter phone number" },
+                ]}
               >
                 <Input />
               </Form.Item>
@@ -575,7 +673,7 @@ const Employees = () => {
               <Form.Item
                 name="role"
                 label="Role"
-                rules={[{ required: true, message: 'Please select role' }]}
+                rules={[{ required: true, message: "Please select role" }]}
               >
                 <Select>
                   <Option value="Senior Counselor">Senior Counselor</Option>

@@ -2,24 +2,24 @@
 const mockUsers = [
   {
     id: 1,
-    email: 'admin@studyabroad.com',
-    password: 'admin123',
-    name: 'Administrator',
-    role: 'admin',
+    email: "admin@studyabroad.com",
+    password: "admin123",
+    name: "Administrator",
+    role: "admin",
   },
   {
     id: 2,
-    email: 'counselor@studyabroad.com',
-    password: 'counselor123',
-    name: 'Sarah Johnson',
-    role: 'counselor',
+    email: "counselor@studyabroad.com",
+    password: "counselor123",
+    name: "Sarah Johnson",
+    role: "counselor",
   },
   {
     id: 3,
-    email: 'employee@studyabroad.com',
-    password: 'employee123',
-    name: 'Mike Chen',
-    role: 'employee',
+    email: "employee@studyabroad.com",
+    password: "employee123",
+    name: "Mike Chen",
+    role: "employee",
   },
 ];
 
@@ -36,23 +36,25 @@ export const handleLogin = (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res.status(400).json({ 
-        message: 'Email and password are required' 
+      return res.status(400).json({
+        message: "Email and password are required",
       });
     }
 
     // Find user by email and password
-    const user = mockUsers.find(u => u.email === email && u.password === password);
+    const user = mockUsers.find(
+      (u) => u.email === email && u.password === password,
+    );
 
     if (!user) {
-      return res.status(401).json({ 
-        message: 'Invalid email or password' 
+      return res.status(401).json({
+        message: "Invalid email or password",
       });
     }
 
     // Generate token
     const token = generateToken(user);
-    
+
     // Store token (in production, use proper session management)
     activeTokens.set(token, {
       userId: user.id,
@@ -67,27 +69,27 @@ export const handleLogin = (req, res) => {
     res.json({
       token,
       user: userData,
-      message: 'Login successful'
+      message: "Login successful",
     });
   } catch (error) {
-    console.error('Login error:', error);
-    res.status(500).json({ message: 'Internal server error' });
+    console.error("Login error:", error);
+    res.status(500).json({ message: "Internal server error" });
   }
 };
 
 export const handleVerifyToken = (req, res) => {
   try {
     const authHeader = req.headers.authorization;
-    
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({ message: 'No token provided' });
+
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return res.status(401).json({ message: "No token provided" });
     }
 
     const token = authHeader.substring(7); // Remove 'Bearer ' prefix
     const tokenData = activeTokens.get(token);
 
     if (!tokenData) {
-      return res.status(401).json({ message: 'Invalid or expired token' });
+      return res.status(401).json({ message: "Invalid or expired token" });
     }
 
     // Check if token is expired (24 hours)
@@ -97,31 +99,31 @@ export const handleVerifyToken = (req, res) => {
 
     if (tokenAge > maxAge) {
       activeTokens.delete(token);
-      return res.status(401).json({ message: 'Token expired' });
+      return res.status(401).json({ message: "Token expired" });
     }
 
     res.json({
       user: tokenData.user,
-      message: 'Token valid'
+      message: "Token valid",
     });
   } catch (error) {
-    console.error('Token verification error:', error);
-    res.status(500).json({ message: 'Internal server error' });
+    console.error("Token verification error:", error);
+    res.status(500).json({ message: "Internal server error" });
   }
 };
 
 export const handleLogout = (req, res) => {
   try {
     const authHeader = req.headers.authorization;
-    
-    if (authHeader && authHeader.startsWith('Bearer ')) {
+
+    if (authHeader && authHeader.startsWith("Bearer ")) {
       const token = authHeader.substring(7);
       activeTokens.delete(token);
     }
 
-    res.json({ message: 'Logout successful' });
+    res.json({ message: "Logout successful" });
   } catch (error) {
-    console.error('Logout error:', error);
-    res.status(500).json({ message: 'Internal server error' });
+    console.error("Logout error:", error);
+    res.status(500).json({ message: "Internal server error" });
   }
 };

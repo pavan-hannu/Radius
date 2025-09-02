@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
-import { 
-  Modal, 
-  Form, 
-  Input, 
-  Select, 
-  DatePicker, 
-  Button, 
-  Space, 
-  Row, 
-  Col, 
-  Upload, 
+import React, { useState } from "react";
+import {
+  Modal,
+  Form,
+  Input,
+  Select,
+  DatePicker,
+  Button,
+  Space,
+  Row,
+  Col,
+  Upload,
   message,
   Steps,
-  Typography
-} from 'antd';
-import { 
-  UserOutlined, 
-  MailOutlined, 
-  PhoneOutlined, 
+  Typography,
+} from "antd";
+import {
+  UserOutlined,
+  MailOutlined,
+  PhoneOutlined,
   UploadOutlined,
   SaveOutlined,
   ArrowLeftOutlined,
-  ArrowRightOutlined
-} from '@ant-design/icons';
+  ArrowRightOutlined,
+} from "@ant-design/icons";
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -39,7 +39,7 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
       await form.validateFields();
       setCurrentStep(currentStep + 1);
     } catch (error) {
-      console.log('Validation failed:', error);
+      console.log("Validation failed:", error);
     }
   };
 
@@ -51,14 +51,14 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
     setLoading(true);
     try {
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      message.success('Student added successfully!');
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      message.success("Student added successfully!");
       form.resetFields();
       setCurrentStep(0);
       onSave(values);
     } catch (error) {
-      message.error('Failed to add student. Please try again.');
+      message.error("Failed to add student. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -72,14 +72,14 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
 
   const steps = [
     {
-      title: 'Personal Info',
+      title: "Personal Info",
       content: (
         <Row gutter={[16, 16]}>
           <Col span={12}>
             <Form.Item
               name="firstName"
               label="First Name"
-              rules={[{ required: true, message: 'Please enter first name' }]}
+              rules={[{ required: true, message: "Please enter first name" }]}
             >
               <Input prefix={<UserOutlined />} placeholder="First Name" />
             </Form.Item>
@@ -88,29 +88,32 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
             <Form.Item
               name="lastName"
               label="Last Name"
-              rules={[{ required: true, message: 'Please enter last name' }]}
+              rules={[{ required: true, message: "Please enter last name" }]}
             >
               <Input placeholder="Last Name" />
             </Form.Item>
           </Col>
-          
+
           <Col span={12}>
             <Form.Item
               name="email"
               label="Email Address"
               rules={[
-                { required: true, message: 'Please enter email' },
-                { type: 'email', message: 'Please enter valid email' }
+                { required: true, message: "Please enter email" },
+                { type: "email", message: "Please enter valid email" },
               ]}
             >
-              <Input prefix={<MailOutlined />} placeholder="student@email.com" />
+              <Input
+                prefix={<MailOutlined />}
+                placeholder="student@email.com"
+              />
             </Form.Item>
           </Col>
           <Col span={12}>
             <Form.Item
               name="phone"
               label="Phone Number"
-              rules={[{ required: true, message: 'Please enter phone number' }]}
+              rules={[{ required: true, message: "Please enter phone number" }]}
             >
               <Input prefix={<PhoneOutlined />} placeholder="+91 9876543210" />
             </Form.Item>
@@ -120,16 +123,18 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
             <Form.Item
               name="dateOfBirth"
               label="Date of Birth"
-              rules={[{ required: true, message: 'Please select date of birth' }]}
+              rules={[
+                { required: true, message: "Please select date of birth" },
+              ]}
             >
-              <DatePicker style={{ width: '100%' }} placeholder="Select DOB" />
+              <DatePicker style={{ width: "100%" }} placeholder="Select DOB" />
             </Form.Item>
           </Col>
           <Col span={12}>
             <Form.Item
               name="gender"
               label="Gender"
-              rules={[{ required: true, message: 'Please select gender' }]}
+              rules={[{ required: true, message: "Please select gender" }]}
             >
               <Select placeholder="Select Gender">
                 <Option value="male">Male</Option>
@@ -143,23 +148,25 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
             <Form.Item
               name="address"
               label="Current Address"
-              rules={[{ required: true, message: 'Please enter address' }]}
+              rules={[{ required: true, message: "Please enter address" }]}
             >
               <TextArea rows={2} placeholder="Enter complete address" />
             </Form.Item>
           </Col>
         </Row>
-      )
+      ),
     },
     {
-      title: 'Academic Info',
+      title: "Academic Info",
       content: (
         <Row gutter={[16, 16]}>
           <Col span={12}>
             <Form.Item
               name="currentEducation"
               label="Current Education Level"
-              rules={[{ required: true, message: 'Please select education level' }]}
+              rules={[
+                { required: true, message: "Please select education level" },
+              ]}
             >
               <Select placeholder="Select Education Level">
                 <Option value="12th">12th Grade</Option>
@@ -174,7 +181,9 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
             <Form.Item
               name="fieldOfStudy"
               label="Field of Study"
-              rules={[{ required: true, message: 'Please enter field of study' }]}
+              rules={[
+                { required: true, message: "Please enter field of study" },
+              ]}
             >
               <Input placeholder="e.g., Computer Science, Engineering" />
             </Form.Item>
@@ -184,7 +193,9 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
             <Form.Item
               name="institution"
               label="Current Institution"
-              rules={[{ required: true, message: 'Please enter institution name' }]}
+              rules={[
+                { required: true, message: "Please enter institution name" },
+              ]}
             >
               <Input placeholder="School/College/University Name" />
             </Form.Item>
@@ -193,7 +204,9 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
             <Form.Item
               name="gpa"
               label="GPA/Percentage"
-              rules={[{ required: true, message: 'Please enter GPA/Percentage' }]}
+              rules={[
+                { required: true, message: "Please enter GPA/Percentage" },
+              ]}
             >
               <Input placeholder="e.g., 8.5 CGPA or 85%" />
             </Form.Item>
@@ -203,16 +216,19 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
             <Form.Item
               name="graduationYear"
               label="Expected Graduation"
-              rules={[{ required: true, message: 'Please select graduation year' }]}
+              rules={[
+                { required: true, message: "Please select graduation year" },
+              ]}
             >
-              <DatePicker picker="year" style={{ width: '100%' }} placeholder="Select Year" />
+              <DatePicker
+                picker="year"
+                style={{ width: "100%" }}
+                placeholder="Select Year"
+              />
             </Form.Item>
           </Col>
           <Col span={12}>
-            <Form.Item
-              name="englishProficiency"
-              label="English Test Score"
-            >
+            <Form.Item name="englishProficiency" label="English Test Score">
               <Select placeholder="Select English Test">
                 <Option value="ielts">IELTS</Option>
                 <Option value="toefl">TOEFL</Option>
@@ -224,25 +240,24 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
           </Col>
 
           <Col span={24}>
-            <Form.Item
-              name="testScore"
-              label="Test Score (if applicable)"
-            >
+            <Form.Item name="testScore" label="Test Score (if applicable)">
               <Input placeholder="e.g., IELTS: 7.5, TOEFL: 95" />
             </Form.Item>
           </Col>
         </Row>
-      )
+      ),
     },
     {
-      title: 'Study Abroad Plans',
+      title: "Study Abroad Plans",
       content: (
         <Row gutter={[16, 16]}>
           <Col span={12}>
             <Form.Item
               name="preferredCountry"
               label="Preferred Country"
-              rules={[{ required: true, message: 'Please select preferred country' }]}
+              rules={[
+                { required: true, message: "Please select preferred country" },
+              ]}
             >
               <Select placeholder="Select Country">
                 <Option value="canada">Canada</Option>
@@ -259,7 +274,9 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
             <Form.Item
               name="intendedProgram"
               label="Intended Program"
-              rules={[{ required: true, message: 'Please select intended program' }]}
+              rules={[
+                { required: true, message: "Please select intended program" },
+              ]}
             >
               <Select placeholder="Select Program Level">
                 <Option value="bachelor">Bachelor's Degree</Option>
@@ -274,7 +291,9 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
             <Form.Item
               name="preferredField"
               label="Preferred Field of Study"
-              rules={[{ required: true, message: 'Please enter preferred field' }]}
+              rules={[
+                { required: true, message: "Please enter preferred field" },
+              ]}
             >
               <Input placeholder="e.g., Computer Science, Business" />
             </Form.Item>
@@ -283,7 +302,7 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
             <Form.Item
               name="intakeYear"
               label="Intended Intake"
-              rules={[{ required: true, message: 'Please select intake year' }]}
+              rules={[{ required: true, message: "Please select intake year" }]}
             >
               <Select placeholder="Select Intake">
                 <Option value="2024-fall">Fall 2024</Option>
@@ -295,10 +314,7 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
           </Col>
 
           <Col span={12}>
-            <Form.Item
-              name="budget"
-              label="Budget (Annual)"
-            >
+            <Form.Item name="budget" label="Budget (Annual)">
               <Select placeholder="Select Budget Range">
                 <Option value="10-20">$10,000 - $20,000</Option>
                 <Option value="20-30">$20,000 - $30,000</Option>
@@ -311,7 +327,7 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
             <Form.Item
               name="assignedCounselor"
               label="Assign Counselor"
-              rules={[{ required: true, message: 'Please assign a counselor' }]}
+              rules={[{ required: true, message: "Please assign a counselor" }]}
             >
               <Select placeholder="Select Counselor">
                 <Option value="sarah">Sarah Johnson</Option>
@@ -323,29 +339,28 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
           </Col>
 
           <Col span={24}>
-            <Form.Item
-              name="additionalNotes"
-              label="Additional Notes"
-            >
-              <TextArea 
-                rows={3} 
+            <Form.Item name="additionalNotes" label="Additional Notes">
+              <TextArea
+                rows={3}
                 placeholder="Any specific requirements, concerns, or additional information..."
               />
             </Form.Item>
           </Col>
         </Row>
-      )
-    }
+      ),
+    },
   ];
 
   return (
     <Modal
       title={
-        <div style={{ textAlign: 'center' }}>
-          <Title level={3} style={{ margin: 0, color: '#1976d2' }}>
+        <div style={{ textAlign: "center" }}>
+          <Title level={3} style={{ margin: 0, color: "#1976d2" }}>
             Add New Student
           </Title>
-          <Text type="secondary">Complete the form to register a new student</Text>
+          <Text type="secondary">
+            Complete the form to register a new student
+          </Text>
         </div>
       }
       visible={visible}
@@ -354,7 +369,7 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
       width={800}
       destroyOnClose
     >
-      <div style={{ marginBottom: '24px' }}>
+      <div style={{ marginBottom: "24px" }}>
         <Steps current={currentStep} size="small">
           {steps.map((step, index) => (
             <Step key={index} title={step.title} />
@@ -366,45 +381,38 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
         form={form}
         layout="vertical"
         onFinish={handleFinish}
-        style={{ marginTop: '24px' }}
+        style={{ marginTop: "24px" }}
       >
-        <div style={{ minHeight: '400px' }}>
-          {steps[currentStep].content}
-        </div>
+        <div style={{ minHeight: "400px" }}>{steps[currentStep].content}</div>
 
-        <div style={{ marginTop: '24px', textAlign: 'center' }}>
+        <div style={{ marginTop: "24px", textAlign: "center" }}>
           <Space>
             {currentStep > 0 && (
-              <Button 
-                icon={<ArrowLeftOutlined />} 
-                onClick={handlePrevious}
-              >
+              <Button icon={<ArrowLeftOutlined />} onClick={handlePrevious}>
                 Previous
               </Button>
             )}
-            
+
             {currentStep < steps.length - 1 ? (
-              <Button 
-                type="primary" 
-                icon={<ArrowRightOutlined />} 
+              <Button
+                type="primary"
+                icon={<ArrowRightOutlined />}
                 onClick={handleNext}
               >
                 Next
               </Button>
             ) : (
-              <Button 
-                type="primary" 
-                htmlType="submit" 
+              <Button
+                type="primary"
+                htmlType="submit"
                 loading={loading}
                 icon={<SaveOutlined />}
               >
                 Add Student
               </Button>
             )}
-            
-            <Button onClick={handleCancel}>
-              Cancel
-            </Button>
+
+            <Button onClick={handleCancel}>Cancel</Button>
           </Space>
         </div>
       </Form>
