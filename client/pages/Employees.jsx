@@ -438,7 +438,7 @@ const Employees = () => {
       {/* Employee Detail Modal */}
       <Modal
         title={`${selectedEmployee?.name} - Student Assignments`}
-        visible={isDetailModalVisible}
+        open={isDetailModalVisible}
         onCancel={() => setIsDetailModalVisible(false)}
         footer={null}
         width={900}
@@ -566,7 +566,7 @@ const Employees = () => {
       {/* Add Remark Modal */}
       <Modal
         title={`Add Remark for ${selectedStudent?.name}`}
-        visible={isRemarkModalVisible}
+        open={isRemarkModalVisible}
         onCancel={() => setIsRemarkModalVisible(false)}
         footer={null}
       >
@@ -623,7 +623,7 @@ const Employees = () => {
       {/* Add Employee Modal */}
       <Modal
         title="Add New Employee"
-        visible={isAddModalVisible}
+        open={isAddModalVisible}
         onCancel={() => setIsAddModalVisible(false)}
         footer={null}
       >
