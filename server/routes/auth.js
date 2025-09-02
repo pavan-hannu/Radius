@@ -1,5 +1,3 @@
-import { RequestHandler } from "express";
-
 // Mock user database
 const mockUsers = [
   {
