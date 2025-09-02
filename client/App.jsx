@@ -97,4 +97,10 @@ const App = () => (
   </QueryClientProvider>
 );
 
+// Render the app
+import { createRoot } from "react-dom/client";
+
+const root = createRoot(document.getElementById("root"));
+root.render(<App />);
+
 export default App;
