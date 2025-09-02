@@ -87,8 +87,7 @@ const Login = () => {
           style={{
             flex: 1,
             color: "white",
-            display: "none",
-            "@media (min-width: 768px)": { display: "block" },
+            display: window.innerWidth >= 768 ? "block" : "none",
           }}
         >
           <div style={{ marginBottom: "40px" }}>
