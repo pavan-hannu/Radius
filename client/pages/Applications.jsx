@@ -699,7 +699,7 @@ const Applications = () => {
       {/* Application Detail Modal */}
       <Modal
         title={`Application Details - ${selectedApplication?.id}`}
-        visible={isDetailModalVisible}
+        open={isDetailModalVisible}
         onCancel={() => setIsDetailModalVisible(false)}
         footer={null}
         width={1000}
