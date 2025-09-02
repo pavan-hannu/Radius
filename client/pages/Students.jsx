@@ -398,7 +398,7 @@ const Students = () => {
 
       {/* Add Student Modal */}
       <AddStudentModal
-        visible={isAddModalVisible}
+        open={isAddModalVisible}
         onCancel={() => setIsAddModalVisible(false)}
         onSave={handleAddStudent}
       />
