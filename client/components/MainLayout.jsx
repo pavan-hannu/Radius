@@ -113,6 +113,12 @@ const MainLayout = () => {
         style={{
           background: '#fff',
           borderRight: '1px solid #f0f0f0',
+          height: '100vh',
+          position: 'fixed',
+          left: 0,
+          top: 0,
+          bottom: 0,
+          overflowY: 'auto',
         }}
       >
         <div 
@@ -177,7 +183,7 @@ const MainLayout = () => {
         />
       </Sider>
       
-      <Layout>
+      <Layout style={{ marginLeft: collapsed ? 80 : 200, transition: 'margin-left 0.2s' }}>
         <Header 
           style={{ 
             padding: '0 24px', 
