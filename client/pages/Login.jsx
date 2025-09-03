@@ -27,13 +27,13 @@ const Login = () => {
     try {
       const result = await login(values);
       if (result.success) {
-        message.success("Login successful! Welcome to Study Abroad CRM");
+        messageApi.success("Login successful! Welcome to Study Abroad CRM");
         navigate("/dashboard");
       } else {
-        message.error(result.error || "Login failed. Please try again.");
+        messageApi.error(result.error || "Login failed. Please try again.");
       }
     } catch (error) {
-      message.error("An unexpected error occurred. Please try again.");
+      messageApi.error("An unexpected error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
