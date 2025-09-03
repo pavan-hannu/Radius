@@ -10,7 +10,6 @@ import {
   Row,
   Col,
   Upload,
-  message,
   Steps,
   Typography,
 } from "antd";
@@ -23,6 +22,7 @@ import {
   ArrowLeftOutlined,
   ArrowRightOutlined,
 } from "@ant-design/icons";
+import { useMessage } from "../contexts/MessageContext";
 
 const { Option } = Select;
 const { TextArea } = Input;
