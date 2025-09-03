@@ -1,6 +1,14 @@
 // Mock data for RadiusF CRM system
 
 import { v4 as uuidv4 } from 'uuid';
+import {
+  storage,
+  userStorage,
+  studentStorage,
+  universityStorage,
+  applicationStorage,
+  employeeStorage
+} from '../utils/localStorage.js';
 
 // Helper function to generate consistent IDs
 const generateId = () => uuidv4();
