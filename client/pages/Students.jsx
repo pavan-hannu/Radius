@@ -33,6 +33,7 @@ const { Option } = Select;
 
 const Students = () => {
   const { user, hasPermission } = useAuth();
+  const messageApi = useMessage();
   const [loading, setLoading] = useState(true);
   const [students, setStudents] = useState([]);
   const [filteredStudents, setFilteredStudents] = useState([]);
