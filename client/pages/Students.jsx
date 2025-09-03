@@ -24,6 +24,7 @@ import {
   ExportOutlined,
 } from "@ant-design/icons";
 import { useAuth } from "../contexts/AuthContext";
+import { useMessage } from "../contexts/MessageContext";
 import AddStudentModal from "../components/AddStudentModal";
 
 const { Title, Text } = Typography;
