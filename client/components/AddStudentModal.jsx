@@ -54,12 +54,12 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      message.success("Student added successfully!");
+      messageApi.success("Student added successfully!");
       form.resetFields();
       setCurrentStep(0);
       onSave(values);
     } catch (error) {
-      message.error("Failed to add student. Please try again.");
+      messageApi.error("Failed to add student. Please try again.");
     } finally {
       setLoading(false);
     }
