@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
         const token = localStorage.getItem("auth_token");
         if (token) {
           // Verify token with backend
-          const response = await axios.get("/api/auth/verify", {
+          const response = await axios.get("http://localhost:8000/api/auth/verify/", {
             headers: { Authorization: `Bearer ${token}` },
           });
           if (response.data.user) {
@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (credentials) => {
     try {
-      const response = await axios.post("/api/auth/login", credentials);
+      const response = await axios.post("http://localhost:8000/api/auth/login/", credentials);
       const { token, user: userData } = response.data;
 
       localStorage.setItem("auth_token", token);
