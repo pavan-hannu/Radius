@@ -33,6 +33,7 @@ const AddStudentModal = ({ visible, onCancel, onSave }) => {
   const [form] = Form.useForm();
   const [currentStep, setCurrentStep] = useState(0);
   const [loading, setLoading] = useState(false);
+  const messageApi = useMessage();
 
   const handleNext = async () => {
     try {
