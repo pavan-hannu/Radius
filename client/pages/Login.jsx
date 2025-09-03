@@ -19,6 +19,7 @@ const { Option } = Select;
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
+  const messageApi = useMessage();
   const navigate = useNavigate();
 
   const onFinish = async (values) => {
