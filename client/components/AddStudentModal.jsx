@@ -29,7 +29,7 @@ const { TextArea } = Input;
 const { Title, Text } = Typography;
 const { Step } = Steps;
 
-const AddStudentModal = ({ visible, onCancel, onSave }) => {
+const AddStudentModal = ({ open, onCancel, onSave }) => {
   const [form] = Form.useForm();
   const [currentStep, setCurrentStep] = useState(0);
   const [loading, setLoading] = useState(false);
