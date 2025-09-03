@@ -7,10 +7,10 @@ import {
   Typography,
   Space,
   Select,
-  message,
 } from "antd";
 import { UserOutlined, LockOutlined, LoginOutlined } from "@ant-design/icons";
 import { useAuth } from "../contexts/AuthContext";
+import { useMessage } from "../contexts/MessageContext";
 import { useNavigate } from "react-router-dom";
 
 const { Title, Text, Paragraph } = Typography;
