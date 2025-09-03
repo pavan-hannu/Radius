@@ -19,6 +19,7 @@ The frontend has been updated to connect to the Django backend. Here's what was 
 ### 🚀 Running the Full Stack
 
 1. **Start Django Backend**
+
 ```bash
 cd backend
 python -m venv venv
@@ -28,7 +29,8 @@ python setup.py
 python manage.py runserver  # Runs on http://localhost:8000
 ```
 
-2. **Start React Frontend** 
+2. **Start React Frontend**
+
 ```bash
 # In the root directory
 pnpm dev  # Runs on http://localhost:8080
@@ -39,7 +41,7 @@ pnpm dev  # Runs on http://localhost:8080
 The frontend now connects to these Django endpoints:
 
 - **Authentication**: `http://localhost:8000/api/auth/`
-- **Students**: `http://localhost:8000/api/students/` 
+- **Students**: `http://localhost:8000/api/students/`
 - **Universities**: `http://localhost:8000/api/universities/`
 - **Applications**: `http://localhost:8000/api/applications/`
 - **Employees**: `http://localhost:8000/api/employees/`
@@ -55,16 +57,19 @@ Both frontend and backend now use the same credentials:
 ### 📊 Features Working
 
 ✅ **Authentication**
+
 - Login with role-based access
 - JWT token authentication
 - Automatic token verification
 
 ✅ **Student Management**
+
 - List students (filtered by counselor for non-admins)
 - Create new students
 - Add remarks and contact history
 
 ✅ **Real-time Updates**
+
 - Frontend fetches live data from Django
 - Role-based filtering works correctly
 - All CRUD operations supported
@@ -76,7 +81,7 @@ To modify API endpoints, update `client/config/api.js`:
 ```javascript
 // Change base URL for production
 const API_CONFIG = {
-  BASE_URL: 'https://your-production-domain.com',
+  BASE_URL: "https://your-production-domain.com",
   // ... rest of config
 };
 ```
@@ -94,8 +99,9 @@ This allows you to change the API URL without modifying code.
 ### 🚨 CORS Configuration
 
 The Django backend is already configured to accept requests from:
+
 - `http://localhost:3000`
-- `http://localhost:8080` 
+- `http://localhost:8080`
 - `http://127.0.0.1:3000`
 - `http://127.0.0.1:8080`
 

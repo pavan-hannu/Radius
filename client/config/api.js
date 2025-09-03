@@ -1,30 +1,30 @@
 // API Configuration
 const API_CONFIG = {
   // Django Backend URL
-  BASE_URL: import.meta.env.VITE_API_URL || 'http://localhost:8000',
-  
+  BASE_URL: import.meta.env.VITE_API_URL || "http://localhost:8000",
+
   // API Endpoints
   ENDPOINTS: {
     // Authentication
-    LOGIN: '/api/auth/login/',
-    VERIFY: '/api/auth/verify/',
-    LOGOUT: '/api/auth/logout/',
-    CURRENT_USER: '/api/auth/me/',
-    
+    LOGIN: "/api/auth/login/",
+    VERIFY: "/api/auth/verify/",
+    LOGOUT: "/api/auth/logout/",
+    CURRENT_USER: "/api/auth/me/",
+
     // Students
-    STUDENTS: '/api/students/',
-    STUDENT_STATS: '/api/students/stats/',
-    STUDENT_REMARKS: '/api/students/remarks/',
-    
+    STUDENTS: "/api/students/",
+    STUDENT_STATS: "/api/students/stats/",
+    STUDENT_REMARKS: "/api/students/remarks/",
+
     // Universities
-    UNIVERSITIES: '/api/universities/',
-    
+    UNIVERSITIES: "/api/universities/",
+
     // Applications
-    APPLICATIONS: '/api/applications/',
-    
+    APPLICATIONS: "/api/applications/",
+
     // Employees
-    EMPLOYEES: '/api/employees/',
-  }
+    EMPLOYEES: "/api/employees/",
+  },
 };
 
 // Helper function to build full URLs
