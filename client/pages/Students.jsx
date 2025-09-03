@@ -268,6 +268,7 @@ const Students = () => {
     // In real app, this would call API to save student
     console.log("Adding new student:", studentData);
     setIsAddModalVisible(false);
+    messageApi.success("Student added successfully!");
     // Refresh students list
     // fetchStudents();
   };
